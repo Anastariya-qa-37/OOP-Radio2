@@ -5,6 +5,49 @@ import static org.junit.jupiter.api.Assertions.*;
 class RadioTest {
 
     @Test
+    void prevFromZeroCustom() {
+        Radio radio = new Radio(20);
+
+        // подготавливаем данные:
+        int expected = 19;
+
+        // вызываем целевой метод:
+        radio.prev();
+
+        // производим проверку (сравниваем ожидаемый и фактический):
+        assertEquals(expected, radio.getChanel());
+    }
+
+    @Test
+    void nextFromZeroCustom() {
+        Radio radio = new Radio(20);
+
+        // подготавливаем данные:
+        int expected = 0;
+
+        // вызываем целевой метод:
+        radio.prev();
+        radio.next();
+
+        // производим проверку (сравниваем ожидаемый и фактический):
+        assertEquals(expected, radio.getChanel());
+    }
+
+    @Test
+    void negativeParamCustom() {
+        Radio radio = new Radio(-5);
+
+        // подготавливаем данные:
+        int expected = 0;
+
+        // вызываем целевой метод:
+        radio.prev();
+
+        // производим проверку (сравниваем ожидаемый и фактический):
+        assertEquals(expected, radio.getChanel());
+    }
+
+    @Test
     void nextFromZero() {
         Radio radio = new Radio();
 
@@ -147,8 +190,8 @@ class RadioTest {
     void increaseMaxValue() {
         Radio radio = new Radio();
 
-        int expected = 10;
-        for (int i = 0; i<10; i++){
+        int expected = 100;
+        for (int i = 0; i<100; i++){
             radio.increaseVolume();
         }
         assertEquals(expected, radio.getCurrentVolume());
